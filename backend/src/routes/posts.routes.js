@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
 const { controllerWithTryCatch } = require('../helpers');
-
+const { categoryExists } = require('../middlewares');
 const PostsController = require('../controllers/posts.controller');
 
 const router = Router();
@@ -13,11 +13,11 @@ const postsController = new PostsController(postsService);
 
 router.route('/posts')
   .get(controllerWithTryCatch(postsController.getAll))
-  .post(controllerWithTryCatch(postsController.create));
+  .post(categoryExists, controllerWithTryCatch(postsController.create));
 
 router.route('/posts/:id')
   .get(controllerWithTryCatch(postsController.getById))
-  .patch(controllerWithTryCatch(postsController.updatePost))
+  .patch(categoryExists, controllerWithTryCatch(postsController.updatePost))
   .delete(controllerWithTryCatch(postsController.deletePost));
 
 module.exports = router;
