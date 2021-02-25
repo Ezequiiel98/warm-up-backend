@@ -1,6 +1,6 @@
-const { CategoryService } = require('../services');
+const { CategoriesService } = require('../services');
 
-const categoryService = new CategoryService();
+const categoriesService = new CategoriesService();
 
 const categoryExists = async (req, res, next) => {
   const { categoryId } = req.body;
@@ -9,7 +9,7 @@ const categoryExists = async (req, res, next) => {
     return res.status(400).json({ message: 'categoryId is required', path: 'categoryId' });
   }
 
-  const category = await categoryService.getById(categoryId);
+  const category = await categoriesService.getById(categoryId);
 
   if (!category) {
     return res.status(400).json({ message: 'categoryId is invalid', path: 'categoryId' });

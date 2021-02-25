@@ -1,8 +1,13 @@
 const { CategoryModel } = require('../models');
 
-class CategoryService {
+class CategoriesService {
   constructor() {
     this.CategoryModel = CategoryModel;
+  }
+
+  async getAll() {
+    const categories = await this.CategoryModel.findAll();
+    return categories;
   }
 
   async getById(id) {
@@ -16,4 +21,4 @@ class CategoryService {
   }
 }
 
-module.exports = CategoryService;
+module.exports = CategoriesService;
