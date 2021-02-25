@@ -5,7 +5,10 @@ const express = require('express');
 const { enviroment, database } = require('./config');
 
 // models
-const { Post, Category } = require('./models');
+require('./models');
+
+// routes
+const { postsRoutes } = require('./routes');
 
 // app
 const app = express();
@@ -25,9 +28,7 @@ database.init();
 app.use(cors());
 app.use(express.json());
 
-const test = require('./controllers/index');
-
-app.use('/test', test);
+app.use('/api', postsRoutes);
 
 app.listen(enviroment.PORT_APP, () => {
   console.log(`Server on port ${enviroment.PORT_APP}`);

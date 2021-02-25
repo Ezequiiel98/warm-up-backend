@@ -42,6 +42,9 @@ const Post = database.dbConfig.define('post', {
     allowNull: false,
     validate: {
       validator: validateImageUrl,
+      notNull: {
+        msg: 'image is required',
+      },
     },
   },
 
