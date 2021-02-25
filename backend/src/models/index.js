@@ -1,7 +1,7 @@
-const Post = require('./Post.model');
-const Category = require('./Category.model');
+const PostModel = require('./Post.model');
+const CategoryModel = require('./Category.model');
 
 module.exports = {
-  Post,
-  Category,
+  PostModel,
+  CategoryModel,
 };
